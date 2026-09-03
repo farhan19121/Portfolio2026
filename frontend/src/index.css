@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Hex Design System Colors */
+    --color-ink-violet: #01011b;
+    --color-plum-charcoal: #31263b;
+    --color-storm-mauve: #43394c;
+    --color-slate-iris: #717a94;
+    --color-ash-lavender: #89828d;
+    --color-parchment: #fffcfc;
+    --color-bone-mist: #ecedf2;
+    --color-fog-border: #dbd7da;
+    --color-twilight-plum: #473982;
+    --color-amethyst: #6f63b7;
+    --color-wisteria: #9e91d6;
+    --color-indigo-plum: #544692;
+
+    /* Fonts */
+    --font-serif-editorial: 'Cormorant Garamond', Georgia, serif;
+    --font-display-condensed: 'Archivo', sans-serif;
+    --font-sans: 'IBM Plex Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+    /* Background and foreground defaults */
+    --background: #fffcfc;
+    --foreground: #01011b;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+    font-family: var(--font-sans);
+    background-color: var(--color-parchment);
+    color: var(--color-ink-violet);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-color: var(--color-parchment);
+    color: var(--color-ink-violet);
+    font-family: var(--font-sans);
+  }
+
+  /* Custom sleek scrollbar for light parchment theme */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #fffcfc;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #dbd7da;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #89828d;
+  }
+}
+
+/* Typography Utility Classes */
+.font-editorial {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-formula {
+  font-family: 'Archivo', sans-serif;
+}
+
+.font-plex {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.font-mono-plex {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Notebook Product Card & Elevated Surfaces */
+.notebook-card {
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #dbd7da;
+  box-shadow: rgba(49, 38, 59, 0.12) 0px 0px 0px 1px, rgba(49, 38, 59, 0.05) 0px 12px 24px -4px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.notebook-card:hover {
+  border-color: #473982;
+  box-shadow: rgba(49, 38, 59, 0.20) 0px 0px 0px 1px, rgba(49, 38, 59, 0.08) 0px 20px 36px -4px, rgba(71, 57, 130, 0.08) 0px 0px 0px 3px;
+}
+
+.notebook-card-elevated {
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid rgba(71, 57, 130, 0.12);
+  box-shadow: rgba(49, 38, 59, 0.18) 0px 0px 0px 1px, rgba(49, 38, 59, 0.08) 0px 26px 57px 0px, rgba(49, 38, 59, 0.06) 0px 60px 80px 0px;
+}
+
+/* Outlined CTA Button (Hex Design System Standard) */
+.btn-outlined {
+  background-color: #ffffff;
+  border: 1px solid #31263b;
+  border-radius: 3px;
+  padding: 8px 18px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: #01011b;
+  transition: all 0.15s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: rgba(49, 38, 59, 0.04) 0px 1px 2px;
+}
+
+.btn-outlined:hover {
+  border-color: #01011b;
+  background-color: #ecedf2;
+  color: #01011b;
+}
+
+.btn-ghost {
+  background-color: transparent;
+  border: none;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: #01011b;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-ghost:hover {
+  text-decoration: underline;
+  color: #473982;
+}
+
+/* Pill Eyebrow Badge */
+.pill-eyebrow {
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #43394c;
+  border: 1px solid #dbd7da;
+  background-color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Code block highlight inside notebook */
+.code-cell {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  line-height: 1.55;
+  background-color: #ecedf2;
+  border-radius: 4px;
+  padding: 12px 16px;
+  color: #01011b;
+  border: 1px solid #dbd7da;
+}
