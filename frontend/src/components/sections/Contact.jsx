@@ -98,9 +98,9 @@ export default function Contact({ onOpenResume }) {
               </span>
 
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/farhankhanmits/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="flex items-center justify-between p-3 rounded-[3px] bg-[#fffcfc] hover:bg-[#ecedf2] border border-[#dbd7da] text-xs font-plex font-medium text-[#01011b] transition-all group"
               >
                 <div className="flex items-center gap-2.5">
@@ -111,9 +111,9 @@ export default function Contact({ onOpenResume }) {
               </a>
 
               <a
-                href="https://github.com"
+                href="https://github.com/farhan19121"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="flex items-center justify-between p-3 rounded-[3px] bg-[#fffcfc] hover:bg-[#ecedf2] border border-[#dbd7da] text-xs font-plex font-medium text-[#01011b] transition-all group"
               >
                 <div className="flex items-center gap-2.5">

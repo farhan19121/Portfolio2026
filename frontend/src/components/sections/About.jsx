@@ -8,11 +8,72 @@ import {
   ChevronLeft,
   ChevronRight,
   Sparkles,
-  CheckCircle2
+  CheckCircle2,
+  Table,
+  FileSpreadsheet,
+  BarChart3,
+  Code2,
+  PieChart
 } from 'lucide-react';
 
 export default function About() {
   const [activeCardIndex, setActiveCardIndex] = useState(0);
+
+  // Bento Grid Tech Stack Items
+  const techStackBento = [
+    {
+      name: 'Python',
+      subtitle: 'Pandas & NumPy',
+      category: 'Data Wrangling',
+      icon: (
+        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.006 2.752h5.81v.825H3.9S0 5.78 0 11.908c0 6.134 3.4 5.922 3.4 5.922h2.03v-2.858s-.11-3.4 3.34-3.4h5.75s3.23.05 3.23-3.132V2.656S18.15 0 11.914 0zm-3.23 1.693c.617 0 1.118.5 1.118 1.118 0 .617-.5 1.118-1.118 1.118a1.118 1.118 0 1 1 0-2.236zm3.4 22.307c6.094 0 5.714-2.656 5.714-2.656l-.006-2.752h-5.81v-.825h8.116s3.9.453 3.9-5.675c0-6.134-3.4-5.922-3.4-5.922h-2.03v2.858s.11 3.4-3.34 3.4h-5.75s-3.23-.05-3.23 3.132v5.782s-.404 2.656 5.836 2.656zm3.23-1.693a1.118 1.118 0 1 1 0-2.236 1.118 1.118 0 0 1 0 2.236z" fill="#473982"/>
+        </svg>
+      ),
+      accent: '#473982',
+      colSpan: 'col-span-1'
+    },
+    {
+      name: 'SQL',
+      subtitle: 'CTEs & Window Functions',
+      category: 'Querying',
+      icon: <Database className="w-5 h-5 text-[#21918c]" />,
+      accent: '#21918c',
+      colSpan: 'col-span-1'
+    },
+    {
+      name: 'MS Excel',
+      subtitle: 'Pivot & Lookups',
+      category: 'Modeling',
+      icon: <FileSpreadsheet className="w-5 h-5 text-[#107c41]" />,
+      accent: '#107c41',
+      colSpan: 'col-span-1'
+    },
+    {
+      name: 'Power BI',
+      subtitle: 'Interactive Dashboards',
+      category: 'BI & KPIs',
+      icon: <BarChart3 className="w-5 h-5 text-[#d97706]" />,
+      accent: '#d97706',
+      colSpan: 'col-span-1'
+    },
+    {
+      name: 'EDA',
+      subtitle: 'Exploratory Analysis',
+      category: 'Discovery',
+      icon: <LineChart className="w-5 h-5 text-[#544692]" />,
+      accent: '#544692',
+      colSpan: 'col-span-1'
+    },
+    {
+      name: 'Tableau',
+      subtitle: 'Visual Analytics',
+      category: 'Reporting',
+      icon: <PieChart className="w-5 h-5 text-[#cd5973]" />,
+      accent: '#cd5973',
+      colSpan: 'col-span-1'
+    }
+  ];
 
   const lifecycleCards = [
     {
@@ -78,7 +139,7 @@ export default function About() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
-        {/* Left Column: Story & Background */}
+        {/* Left Column: 1st Paragraph Story + Tech Stack Bento Grid */}
         <div className="lg:col-span-5 flex flex-col justify-between space-y-6 py-1">
           <div className="space-y-4">
             <h3 className="text-xl font-formula font-bold text-[#01011b] tracking-tight flex items-center gap-2.5">
@@ -89,19 +150,43 @@ export default function About() {
             <p className="text-[#31263b] font-plex text-sm sm:text-base leading-relaxed">
               My engineering education instilled a disciplined, first-principles problem-solving framework. I quickly realized that the intersection of rigorous quantitative methods and commercial business decisions is where data creates transformative value.
             </p>
-
-            <p className="text-[#31263b] font-plex text-sm sm:text-base leading-relaxed">
-              Whether auditing <strong className="text-[#01011b] font-semibold">8,000+ manufacturing records</strong> or dissecting <strong className="text-[#01011b] font-semibold">retail margins across 3,900+ customer cohorts</strong>, my focus remains constant: uncover the "why" behind the numbers and deliver actionable solutions that drive measurable bottom-line growth.
-            </p>
-
-            <p className="text-[#43394c] font-plex text-xs sm:text-sm leading-relaxed pt-1">
-              Every analysis follows a structured, end-to-end framework — moving methodically from raw operational anomalies to validated commercial strategies.
-            </p>
           </div>
 
-          <div className="p-4 rounded-[4px] bg-[#ecedf2]/50 border border-[#dbd7da] flex items-center justify-between text-xs font-mono-plex text-[#43394c]">
-            <span className="font-semibold text-[#01011b]">Core Discipline:</span>
-            <span>Data Rigor → Business Value</span>
+          {/* Bento Grid: Core Analytics Tech Stack */}
+          <div className="space-y-2.5 pt-1">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-mono-plex text-[#717a94] uppercase tracking-wider font-semibold">
+                Analytics Tech Stack &amp; Tooling
+              </span>
+              <span className="text-[10px] font-mono-plex text-[#473982]">Verified Stack</span>
+            </div>
+
+            <div className="grid grid-cols-3 gap-2.5">
+              {techStackBento.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="notebook-card p-3 bg-[#ffffff] hover:bg-[#fffcfc] border border-[#dbd7da] rounded-[4px] flex flex-col justify-between transition-all duration-200 hover:shadow-sm hover:-translate-y-0.5 group"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="p-1.5 rounded-[3px] bg-[#ecedf2] flex items-center justify-center">
+                      {item.icon}
+                    </div>
+                    <span className="text-[9px] font-mono-plex text-[#717a94] uppercase group-hover:text-[#01011b] transition-colors">
+                      {item.category}
+                    </span>
+                  </div>
+
+                  <div>
+                    <h4 className="font-formula font-bold text-xs sm:text-sm text-[#01011b] leading-none">
+                      {item.name}
+                    </h4>
+                    <p className="text-[10px] text-[#717a94] font-plex mt-1 truncate">
+                      {item.subtitle}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
