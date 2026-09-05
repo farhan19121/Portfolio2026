@@ -6,9 +6,6 @@ import ResumeModal from './components/layout/ResumeModal';
 import Hero from './components/sections/Hero';
 import Projects from './components/sections/Projects';
 import About from './components/sections/About';
-import Experience from './components/sections/Experience';
-import Skills from './components/sections/Skills';
-import Contact from './components/sections/Contact';
 import AdminLogin from './components/admin/AdminLogin';
 import AdminDashboard from './components/admin/AdminDashboard';
 import { ArrowLeft } from 'lucide-react';
@@ -89,8 +86,7 @@ function MainApp() {
     );
   }
 
-  // Main portfolio view — Navbar + Sections + Footer
-  // Case Studies is placed immediately after Hero section
+  // Main portfolio view — Navbar + Hero + Case Studies + About + Footer (with Contact)
   return (
     <div className="min-h-screen bg-[#fffcfc] text-[#01011b] flex flex-col justify-between selection:bg-[#473982]/15 selection:text-[#01011b]">
       <Navbar
@@ -99,15 +95,12 @@ function MainApp() {
       />
 
       <main className="flex-1">
-        <Hero onOpenResume={() => setResumeOpen(true)} />
+        <Hero />
         <Projects />
         <About />
-        <Experience />
-        <Skills />
-        <Contact onOpenResume={() => setResumeOpen(true)} />
       </main>
 
-      <Footer />
+      <Footer onOpenResume={() => setResumeOpen(true)} />
 
       <ResumeModal
         isOpen={resumeOpen}

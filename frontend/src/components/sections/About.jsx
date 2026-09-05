@@ -1,141 +1,234 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
-  GraduationCap, 
-  Lightbulb, 
   Compass, 
   Database,
   LineChart,
   Search,
-  Check
+  Lightbulb,
+  ChevronLeft,
+  ChevronRight,
+  Sparkles,
+  CheckCircle2
 } from 'lucide-react';
 
 export default function About() {
-  const pillars = [
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
+
+  const lifecycleCards = [
     {
+      id: '01',
+      title: 'Problem Definition',
       icon: Search,
-      title: '1. Problem Definition',
+      accent: '#473982',
+      bgAccent: 'rgba(71, 57, 130, 0.08)',
+      borderColor: '#473982',
       description: 'Understanding root business drivers, margin leakage, and operational bottlenecks before writing a single line of query.',
-      accent: '#473982'
+      deliverables: ['KPI Mapping', 'Margin Gap Discovery', 'Hypothesis Design']
     },
     {
+      id: '02',
+      title: 'Relational & Messy Data Handling',
       icon: Database,
-      title: '2. Relational & Messy Data Handling',
+      accent: '#21918c',
+      bgAccent: 'rgba(33, 145, 140, 0.08)',
+      borderColor: '#21918c',
       description: 'Cleaning unstructured inputs, writing SQL CTEs, window functions, and validating records to eliminate bias and inaccuracies.',
-      accent: '#21918c'
+      deliverables: ['SQL CTEs & Windowing', 'Data Integrity Audits', 'Schema Normalization']
     },
     {
+      id: '03',
+      title: 'Exploratory & KPI Modeling',
       icon: LineChart,
-      title: '3. Exploratory & KPI Modeling',
+      accent: '#544692',
+      bgAccent: 'rgba(84, 70, 146, 0.08)',
+      borderColor: '#544692',
       description: 'Segmenting customer tiers, calculating unit economics, and discovering purchase affinity patterns.',
-      accent: '#544692'
+      deliverables: ['Cohort RFM Analysis', 'Unit Economics', 'Purchase Affinity Curves']
     },
     {
+      id: '04',
+      title: 'Actionable Recommendations',
       icon: Lightbulb,
-      title: '4. Actionable Recommendations',
+      accent: '#cd5973',
+      bgAccent: 'rgba(205, 89, 115, 0.08)',
+      borderColor: '#cd5973',
       description: 'Delivering clear, metric-backed strategic steps that leadership, marketing, or operations teams can execute immediately.',
-      accent: '#6f63b7'
+      deliverables: ['Executive Briefs', 'Revenue Recovery Plans', 'Strategic Dashboards']
     }
   ];
+
+  const handlePrev = () => {
+    setActiveCardIndex((prev) => (prev === 0 ? lifecycleCards.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setActiveCardIndex((prev) => (prev === lifecycleCards.length - 1 ? 0 : prev + 1));
+  };
+
+  const activeCard = lifecycleCards[activeCardIndex];
+  const ActiveIcon = activeCard.icon;
 
   return (
     <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 max-w-[1200px] mx-auto border-t border-[#ecedf2]">
       {/* Section Header */}
-      <div className="flex flex-col items-start gap-2 mb-14">
-        <div className="pill-eyebrow">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#473982]"></span>
-          <span>02 / ABOUT & PHILOSOPHY</span>
-        </div>
-        <h2 className="text-3xl sm:text-4xl font-formula font-bold text-[#01011b] tracking-tight mt-1">
-          Connecting Technical Rigor with Commercial Strategy
+      <div className="flex flex-col items-start mb-12">
+        <h2 className="text-3xl sm:text-4xl font-formula font-bold text-[#01011b] tracking-tight">
+          About &amp; Philosophy
         </h2>
-        <p className="text-[#43394c] font-plex text-sm max-w-2xl mt-0.5">
-          I don't just build dashboards with arbitrary charts. I approach every dataset as a research notebook to uncover profit, retention, and operational efficiency.
-        </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left Column: Story & Background Notebook Card */}
-        <div className="lg:col-span-6 space-y-5">
-          <div className="notebook-card p-7 sm:p-8 space-y-4">
-            <h3 className="text-base font-formula font-bold text-[#01011b] tracking-tight flex items-center gap-2">
-              <Compass className="w-4 h-4 text-[#473982]" />
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+        {/* Left Column: Story & Background */}
+        <div className="lg:col-span-5 flex flex-col justify-between space-y-6 py-1">
+          <div className="space-y-4">
+            <h3 className="text-xl font-formula font-bold text-[#01011b] tracking-tight flex items-center gap-2.5">
+              <Compass className="w-5 h-5 text-[#473982]" />
               The Journey from Engineering to Analytics
             </h3>
             
-            <p className="text-[#31263b] font-plex text-xs sm:text-sm leading-relaxed">
-              My engineering education at <strong className="text-[#01011b]">Madhav Institute of Technology & Science (MITS), Gwalior</strong> instilled a disciplined, first-principles problem-solving framework. I quickly realized that the intersection of rigorous quantitative methods and commercial business decisions is where data creates transformative value.
+            <p className="text-[#31263b] font-plex text-sm sm:text-base leading-relaxed">
+              My engineering education instilled a disciplined, first-principles problem-solving framework. I quickly realized that the intersection of rigorous quantitative methods and commercial business decisions is where data creates transformative value.
             </p>
 
-            <p className="text-[#31263b] font-plex text-xs sm:text-sm leading-relaxed">
-              Whether auditing <strong className="text-[#01011b]">8,000+ manufacturing records</strong> at Ostwal Group of Industries or dissecting <strong className="text-[#01011b]">retail margins across 3,900+ customers</strong>, my focus remains constant: uncover the "why" behind the numbers and deliver actionable solutions.
+            <p className="text-[#31263b] font-plex text-sm sm:text-base leading-relaxed">
+              Whether auditing <strong className="text-[#01011b] font-semibold">8,000+ manufacturing records</strong> or dissecting <strong className="text-[#01011b] font-semibold">retail margins across 3,900+ customer cohorts</strong>, my focus remains constant: uncover the "why" behind the numbers and deliver actionable solutions that drive measurable bottom-line growth.
             </p>
 
-            {/* Target roles badge list */}
-            <div className="pt-4 border-t border-[#dbd7da]/70">
-              <span className="text-[11px] font-mono-plex text-[#717a94] block mb-2 uppercase tracking-wider">
-                Target Roles:
+            <p className="text-[#43394c] font-plex text-xs sm:text-sm leading-relaxed pt-1">
+              Every analysis follows a structured, end-to-end framework — moving methodically from raw operational anomalies to validated commercial strategies.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-[4px] bg-[#ecedf2]/50 border border-[#dbd7da] flex items-center justify-between text-xs font-mono-plex text-[#43394c]">
+            <span className="font-semibold text-[#01011b]">Core Discipline:</span>
+            <span>Data Rigor → Business Value</span>
+          </div>
+        </div>
+
+        {/* Right Column: Swipeable Cards with Title Only (Details expand on click) */}
+        <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
+          {/* Header with Navigation Controls */}
+          <div className="flex items-center justify-between pb-2">
+            <div>
+              <h3 className="text-sm font-formula font-bold text-[#01011b] flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-[#473982]" />
+                The Analytical Lifecycle Framework
+              </h3>
+              <p className="text-[11px] font-mono-plex text-[#717a94]">
+                Click any card to inspect stage deliverables
+              </p>
+            </div>
+
+            <div className="flex items-center gap-1">
+              <button
+                onClick={handlePrev}
+                className="p-1.5 rounded-[3px] border border-[#dbd7da] bg-[#ffffff] hover:bg-[#ecedf2] text-[#01011b] transition-colors"
+                title="Previous stage"
+                aria-label="Previous"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={handleNext}
+                className="p-1.5 rounded-[3px] border border-[#dbd7da] bg-[#ffffff] hover:bg-[#ecedf2] text-[#01011b] transition-colors"
+                title="Next stage"
+                aria-label="Next"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* Swipeable / Clickable Cards Row (Title Only on Cards) */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            {lifecycleCards.map((card, idx) => {
+              const Icon = card.icon;
+              const isSelected = activeCardIndex === idx;
+
+              return (
+                <button
+                  key={card.id}
+                  onClick={() => setActiveCardIndex(idx)}
+                  className={`p-3.5 rounded-[4px] border text-left transition-all duration-200 flex flex-col justify-between h-28 relative group cursor-pointer focus:outline-none ${
+                    isSelected
+                      ? 'bg-[#ffffff] shadow-md -translate-y-1'
+                      : 'bg-[#ffffff]/70 hover:bg-[#ffffff] hover:-translate-y-0.5'
+                  }`}
+                  style={{
+                    borderColor: isSelected ? card.accent : '#dbd7da',
+                    borderWidth: isSelected ? '1.5px' : '1px'
+                  }}
+                >
+                  <div className="flex items-center justify-between w-full">
+                    <span 
+                      className="text-[10px] font-mono-plex font-bold px-1.5 py-0.5 rounded-[2px]"
+                      style={{ backgroundColor: card.bgAccent, color: card.accent }}
+                    >
+                      {card.id}
+                    </span>
+                    <Icon className="w-4 h-4" style={{ color: card.accent }} />
+                  </div>
+
+                  {/* Title Only on Card */}
+                  <div className="mt-auto">
+                    <h4 className="font-formula font-bold text-xs sm:text-[13px] text-[#01011b] leading-snug line-clamp-2">
+                      {card.title}
+                    </h4>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Expanded Details Panel (Appears / Updates dynamically on Card Click) */}
+          <div 
+            className="p-5 sm:p-6 rounded-[6px] border bg-[#ffffff] shadow-sm transition-all duration-300 space-y-4"
+            style={{ borderColor: activeCard.accent }}
+          >
+            <div className="flex items-center justify-between border-b border-[#ecedf2] pb-3">
+              <div className="flex items-center gap-3">
+                <div 
+                  className="w-8 h-8 rounded-[3px] flex items-center justify-center"
+                  style={{ backgroundColor: activeCard.bgAccent, color: activeCard.accent }}
+                >
+                  <ActiveIcon className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono-plex font-bold uppercase tracking-wider" style={{ color: activeCard.accent }}>
+                    Stage {activeCard.id} Details
+                  </span>
+                  <h4 className="text-base font-formula font-bold text-[#01011b]">
+                    {activeCard.title}
+                  </h4>
+                </div>
+              </div>
+
+              <div className="text-xs font-mono-plex text-[#717a94] hidden sm:block">
+                {activeCardIndex + 1} of {lifecycleCards.length}
+              </div>
+            </div>
+
+            <p className="text-xs sm:text-sm text-[#31263b] font-plex leading-relaxed">
+              {activeCard.description}
+            </p>
+
+            {/* Key Deliverables */}
+            <div className="pt-2">
+              <span className="text-[10px] font-mono-plex text-[#717a94] uppercase tracking-wider block mb-2">
+                Stage Deliverables:
               </span>
               <div className="flex flex-wrap gap-1.5">
-                {[
-                  'Data Analyst',
-                  'Business Analyst',
-                  'Product Analyst',
-                  'Analytics Associate',
-                  'Operations Analyst'
-                ].map((role) => (
+                {activeCard.deliverables.map((item, dIdx) => (
                   <span
-                    key={role}
-                    className="px-2.5 py-1 text-xs font-plex font-medium rounded-[3px] bg-[#ecedf2] text-[#01011b] border border-[#dbd7da]"
+                    key={dIdx}
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-plex rounded-[3px] bg-[#ecedf2] border border-[#dbd7da] text-[#01011b]"
                   >
-                    {role}
+                    <CheckCircle2 className="w-3 h-3 text-[#473982]" />
+                    <span>{item}</span>
                   </span>
                 ))}
               </div>
             </div>
-          </div>
-
-          {/* Education Card */}
-          <div className="notebook-card p-5 flex items-start gap-3.5">
-            <div className="p-2.5 rounded-[3px] bg-[#ecedf2] border border-[#dbd7da] text-[#473982]">
-              <GraduationCap className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-[10px] font-mono-plex text-[#717a94] font-medium uppercase">EDUCATION</div>
-              <h4 className="text-sm font-formula font-bold text-[#01011b] mt-0.5">Bachelor of Technology — Electrical Engineering</h4>
-              <p className="text-xs text-[#43394c] font-plex mt-0.5">
-                Madhav Institute of Technology & Science (MITS), Gwalior
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column: 4-Pillar Analytical Framework */}
-        <div className="lg:col-span-6 space-y-3">
-          <h3 className="text-xs font-mono-plex uppercase tracking-wider text-[#717a94] mb-1">
-            The Analytical Lifecycle Framework
-          </h3>
-
-          <div className="grid grid-cols-1 gap-3">
-            {pillars.map((pillar, idx) => {
-              const Icon = pillar.icon;
-              return (
-                <div 
-                  key={idx}
-                  className="notebook-card p-4 sm:p-5 flex items-start gap-3.5"
-                >
-                  <div 
-                    className="w-9 h-9 rounded-[3px] border border-[#dbd7da] flex items-center justify-center shrink-0 bg-[#ecedf2]"
-                    style={{ color: pillar.accent }}
-                  >
-                    <Icon className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h4 className="font-formula font-bold text-[#01011b] text-sm">{pillar.title}</h4>
-                    <p className="text-xs text-[#43394c] font-plex mt-0.5 leading-relaxed">{pillar.description}</p>
-                  </div>
-                </div>
-              );
-            })}
           </div>
         </div>
       </div>
