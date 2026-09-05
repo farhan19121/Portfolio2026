@@ -6,12 +6,20 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-f$8%ua71z89#+_r(u^@6s6ml^6)p^e0ic6hescn8j%apov7)3c')
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY",
+    "django-insecure-local-development-key-change-this-in-production"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "True") == "True"
+DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1', 'testserver', '.vercel.app', '.onrender.com']
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    ".onrender.com",
+    ".vercel.app",
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -63,13 +71,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'portfolio_backend.wsgi.application'
 
 # Database configuration
-DATABASE_URL = os.environ.get("postgresql://portfolio2026_user:5SLMZ1LcxppqugE2Hbaj3EXpQn9tJ8PU@dpg-dacqt55g1s2s73bgt14g-a/portfolio2026")
+DATABASE_URL = os.environ.get("DATABASE_URL")
+
 if DATABASE_URL:
     DATABASES = {
-    "default": dj_database_url.config(
-        default=os.environ.get("postgresql://portfolio2026_user:5SLMZ1LcxppqugE2Hbaj3EXpQn9tJ8PU@dpg-dacqt55g1s2s73bgt14g-a/portfolio2026")
-    )
-}
+        "default": dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,
+            ssl_require=True,
+        )
+    }
 else:
     DATABASES = {
         "default": {
@@ -77,7 +88,6 @@ else:
             "NAME": BASE_DIR / "db.sqlite3",
         }
     }
-
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
