@@ -63,11 +63,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'portfolio_backend.wsgi.application'
 
 # Database configuration
-DATABASE_URL = os.environ.get("DATABASE_URL")
+DATABASE_URL = os.environ.get("postgresql://portfolio2026_user:5SLMZ1LcxppqugE2Hbaj3EXpQn9tJ8PU@dpg-dacqt55g1s2s73bgt14g-a/portfolio2026")
 if DATABASE_URL:
     DATABASES = {
     "default": dj_database_url.config(
-        default=os.environ.get("DATABASE_URL")
+        default=os.environ.get("postgresql://portfolio2026_user:5SLMZ1LcxppqugE2Hbaj3EXpQn9tJ8PU@dpg-dacqt55g1s2s73bgt14g-a/portfolio2026")
     )
 }
 else:
